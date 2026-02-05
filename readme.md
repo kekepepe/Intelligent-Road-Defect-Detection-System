@@ -33,6 +33,8 @@
 - **算法**: 符合JTG 5210-2018标准的PCI计算方法
 - **语言**: Python
 
+<img width="1920" height="953" alt="image" src="https://github.com/user-attachments/assets/997e9f61-5885-4ce6-ac9f-8b90229ce817" />
+
 ## 使用方法
 
 ### 环境准备
