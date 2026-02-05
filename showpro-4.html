@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>路面病害检测数据分析平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 引入 Chart.js 数据标签插件 -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <style>
+        .grade-优 { color: #10b981; border-color: #10b981; }
+        .grade-良 { color: #3b82f6; border-color: #3b82f6; }
+        .grade-中 { color: #f59e0b; border-color: #f59e0b; }
+        .grade-次 { color: #ef4444; border-color: #ef4444; }
+        .grade-差 { color: #7f1d1d; border-color: #7f1d1d; }
+        
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: #94a3b8; }
+
+        .collapse-content { 
+            transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+            overflow-y: auto; 
+            overflow-x: hidden;
+            background-color: #f8fafc;
+        }
+        
+        .collapse-active {
+            max-height: 450px !important;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .rotate-icon { transition: transform 0.2s; }
+        .collapsed .rotate-icon { transform: rotate(-90deg); }
+
+        .active-item { 
+            border-left: 4px solid #3b82f6; 
+            background-color: #eff6ff; 
+            color: #1d4ed8 !important;
+            font-weight: 700;
+        }
+
+        .stat-value { letter-spacing: -1px; }
+
+        pre {
+            scrollbar-width: thin;
+            scrollbar-color: #cbd5e1 transparent;
+        }
+        pre::-webkit-scrollbar { height: 6px; }
+        pre::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900 select-none">
+
+    <div class="h-screen flex flex-col overflow-hidden">
+        <!-- 导航栏 -->
+        <header class="bg-slate-900 shadow-lg px-6 py-3 flex justify-between items-center z-30">
+            <div class="flex items-center space-x-3">
+                <svg class="w-6 h-6 mr-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A2 2 0 013 15.487V6a2 2 0 011.106-1.789l5.447-2.724a2 2 0 011.894 0l5.447 2.724A2 2 0 0118 6v9.487a2 2 0 01-1.106 1.789L11.447 20a2 2 0 01-1.894 0z"></path>
+                </svg>
+                <h1 class="text-white font-bold tracking-tight">路面病害检测展示系统</h1>
+            </div>
+            <div class="flex space-x-3">
+                <label class="group cursor-pointer bg-slate-800 hover:bg-blue-600 border border-slate-700 text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm transition-all flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    导入 JSON
+                    <input type="file" id="jsonInput" accept=".json" class="hidden">
+                </label>
+                <label class="group cursor-pointer bg-slate-800 hover:bg-indigo-600 border border-slate-700 text-slate-300 hover:text-white px-4 py-2 rounded-lg text-sm transition-all flex items-center">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    导入图片库
+                    <input type="file" id="imageInput" accept="image/*" multiple class="hidden">
+                </label>
+            </div>
+        </header>
+
+        <main class="flex-1 flex overflow-hidden">
+            <!-- 左侧列表 -->
+            <aside class="w-80 bg-white border-r flex flex-col shadow-xl z-20">
+                <div class="p-4 bg-slate-50 border-b">
+                    <button onclick="switchView('dashboard')" class="w-full p-3 rounded-xl bg-white border border-slate-200 shadow-sm text-slate-700 hover:border-blue-400 hover:text-blue-600 transition-all flex items-center justify-between group">
+                        <div class="flex items-center">
+                            <svg class="w-5 h-5 mr-2 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path></svg>
+                            <span class="font-bold text-sm">数据总览看板</span>
+                        </div>
+                        <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                </div>
+
+                <div class="px-4 py-2 border-b flex justify-between items-center bg-white">
+                    <span class="text-xs font-black text-slate-400 uppercase tracking-widest">分级列表</span>
+                    <span id="totalCount" class="text-xs font-mono text-slate-400">0 ITEMS</span>
+                </div>
+
+                <div id="categoryContainer" class="flex-1 overflow-y-auto custom-scrollbar bg-white"></div>
+            </aside>
+
+            <!-- 右侧容器 -->
+            <section class="flex-1 overflow-hidden relative flex flex-col">
+                <div class="bg-white border-b px-6 py-2 flex items-center justify-between shadow-sm z-10">
+                    <div class="flex space-x-1 bg-slate-100 p-1 rounded-lg">
+                        <button onclick="switchView('detail')" id="tabDetail" class="px-4 py-1.5 rounded-md text-sm font-bold transition-all text-slate-500 hover:text-slate-800">单图详情</button>
+                        <button onclick="switchView('dashboard')" id="tabDashboard" class="px-4 py-1.5 rounded-md text-sm font-bold transition-all bg-white text-slate-800 shadow-sm">总览看板</button>
+                    </div>
+                </div>
+
+                <div class="flex-1 relative">
+                    <!-- 视图1: 单图详情 -->
+                    <div id="viewDetail" class="absolute inset-0 overflow-y-auto p-6 transition-opacity duration-300 opacity-0 pointer-events-none bg-slate-50">
+                        <div class="max-w-6xl mx-auto space-y-6">
+                            <!-- 图片展示 -->
+                            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                                <div class="px-6 py-4 border-b flex justify-between items-center bg-white/50 backdrop-blur-md">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="p-2 bg-slate-100 rounded-lg"><svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg></div>
+                                        <h2 id="currentFileName" class="font-bold text-slate-700 font-mono uppercase tracking-tighter">FILE_NAME.JPG</h2>
+                                    </div>
+                                    <span id="currentGrade" class="px-5 py-1.5 rounded-full text-sm font-black uppercase tracking-widest border-2">等级</span>
+                                </div>
+                                <div class="bg-slate-950 flex justify-center items-center h-[500px] relative">
+                                    <img id="mainImage" src="" class="max-h-full max-w-full object-contain shadow-2xl transition-transform duration-500">
+                                    <div id="imgPlaceholder" class="absolute inset-0 flex flex-col items-center justify-center text-slate-600 bg-slate-900">
+                                        <svg class="w-12 h-12 mb-2 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                        <p class="text-sm uppercase font-bold tracking-widest">请选择图片或导入库</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 平行框：指标与结论 -->
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">关键指标分析</h3>
+                                    <div class="flex space-x-4">
+                                        <div class="flex-1 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-2xl border border-blue-100/50 text-center">
+                                            <div id="statPCI" class="text-5xl font-black text-blue-600 stat-value tracking-tighter">-</div>
+                                            <div class="text-xs font-bold text-blue-400 mt-2 uppercase">PCI 指数</div>
+                                        </div>
+                                        <div class="flex-1 bg-gradient-to-br from-slate-50 to-blue-50 p-6 rounded-2xl border border-slate-100 text-center">
+                                            <div id="statDR" class="text-5xl font-black text-slate-700 stat-value tracking-tighter">-</div>
+                                            <div class="text-xs font-bold text-slate-400 mt-2 uppercase">DR 扣分</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 flex flex-col">
+                                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">AI 路况结论</h3>
+                                    <div class="flex-1 bg-slate-50 p-5 rounded-xl border border-slate-100">
+                                        <p id="statDesc" class="text-slate-600 leading-relaxed text-sm font-medium">数据等待中...</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 病害详情：全宽四等分布局 -->
+                            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+                                <div class="px-6 py-4 border-b bg-slate-50/50 flex items-center justify-between">
+                                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest">病害详情分布</h3>
+                                    <span id="findingsCount" class="text-xs bg-blue-100 text-blue-600 px-2 py-0.5 rounded-full font-bold">0 个</span>
+                                </div>
+                                <div class="w-full">
+                                    <table class="w-full table-fixed divide-y divide-slate-100 text-sm">
+                                        <thead class="bg-slate-50/50">
+                                            <tr>
+                                                <th class="w-1/4 px-6 py-4 text-left font-bold text-slate-400 uppercase tracking-tight">病害类型</th>
+                                                <th class="w-1/4 px-6 py-4 text-left font-bold text-slate-400 uppercase tracking-tight">严重程度</th>
+                                                <th class="w-1/4 px-6 py-4 text-left font-bold text-slate-400 uppercase tracking-tight">病害面积 (㎡)</th>
+                                                <th class="w-1/4 px-6 py-4 text-left font-bold text-slate-400 uppercase tracking-tight">线性长度 (m)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="findingsTable" class="divide-y divide-slate-100 text-slate-700"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 原始 JSON 片段 -->
+                            <div class="bg-slate-900 rounded-2xl shadow-sm overflow-hidden">
+                                <div class="px-6 py-3 border-b border-slate-800 flex items-center justify-between">
+                                    <h3 class="text-xs font-black text-slate-500 uppercase tracking-widest">RAW JSON SNIPPET</h3>
+                                    <button onclick="copyJson()" class="text-xs font-bold text-blue-400 hover:text-blue-300">COPY</button>
+                                </div>
+                                <div class="p-6">
+                                    <pre id="jsonSnippet" class="text-emerald-400 font-mono text-sm leading-relaxed overflow-x-auto">{}</pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 视图2: 总览看板 -->
+                    <div id="viewDashboard" class="absolute inset-0 overflow-y-auto p-8 transition-opacity duration-300 opacity-100 bg-slate-50">
+                        <div class="max-w-7xl mx-auto space-y-8">
+                            <!-- 核心数据卡片 - 已修改为5列布局 -->
+                            <div id="globalStats" class="grid grid-cols-1 md:grid-cols-5 gap-4"></div>
+
+                            <!-- 图表行 -->
+                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">路网质量等级占比</h3>
+                                    <div class="h-64 flex justify-center">
+                                        <canvas id="gradePieChart"></canvas>
+                                    </div>
+                                </div>
+                                <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">核心病害类型占比</h3>
+                                    <div class="h-64 flex justify-center">
+                                        <canvas id="typePieChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 分类卡片 -->
+                            <div class="space-y-6">
+                                <h3 class="text-base font-black text-slate-800 flex items-center">
+                                    <span class="w-1.5 h-6 bg-blue-600 rounded-full mr-3"></span>
+                                    分类数据洞察与典型示例
+                                </h3>
+                                <div class="grid grid-cols-1 md:grid-cols-5 gap-4" id="gradeDetailCards"></div>
+                            </div>
+
+                            <div id="dashboardEmpty" class="flex flex-col items-center justify-center py-24 text-slate-300">
+                                <div class="p-8 bg-white rounded-full shadow-inner mb-6">
+                                    <svg class="w-20 h-20 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                                </div>
+                                <h2 class="text-2xl font-bold text-slate-400">暂无路网分析数据</h2>
+                                <p class="mt-2 text-sm">请先点击顶部按钮导入检测数据 (JSON) 进行分析</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // 注册插件
+        Chart.register(ChartDataLabels);
+
+        let inspectionData = {};
+        let imageFiles = {};
+        let gradeChart = null;
+        let typeChart = null;
+        const GRADES = ['优', '良', '中', '次', '差'];
+        const TARGET_TYPES = ['龟裂', '横向裂纹', '纵向裂纹', '坑槽', '麻面', '修补', '积水'];
+        const GRADE_COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#7f1d1d'];
+        const TYPE_COLORS = ['#6366f1', '#8b5cf6', '#ec4899', '#f43f5e', '#f97316', '#eab308', '#06b6d4'];
+
+        const jsonInput = document.getElementById('jsonInput');
+        const imageInput = document.getElementById('imageInput');
+        const categoryContainer = document.getElementById('categoryContainer');
+
+        jsonInput.addEventListener('change', async (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            try {
+                const text = await file.text();
+                inspectionData = JSON.parse(text);
+                processAndRender();
+            } catch (err) { alert('JSON 解析失败'); }
+        });
+
+        imageInput.addEventListener('change', (e) => {
+            Array.from(e.target.files).forEach(file => {
+                imageFiles[file.name] = URL.createObjectURL(file);
+            });
+            renderDashboard();
+            const activeId = document.querySelector('.active-item')?.dataset.id;
+            if (activeId) showDetail(activeId);
+        });
+
+        function switchView(view) {
+            const isDetail = view === 'detail';
+            document.getElementById('viewDetail').style.opacity = isDetail ? '1' : '0';
+            document.getElementById('viewDetail').style.pointerEvents = isDetail ? 'auto' : 'none';
+            document.getElementById('viewDashboard').style.opacity = isDetail ? '0' : '1';
+            document.getElementById('viewDashboard').style.pointerEvents = isDetail ? 'none' : 'auto';
+            
+            document.getElementById('tabDetail').className = isDetail ? "px-4 py-1.5 rounded-md text-sm font-bold bg-white text-slate-800 shadow-sm" : "px-4 py-1.5 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800";
+            document.getElementById('tabDashboard').className = !isDetail ? "px-4 py-1.5 rounded-md text-sm font-bold bg-white text-slate-800 shadow-sm" : "px-4 py-1.5 rounded-md text-sm font-bold text-slate-500 hover:text-slate-800";
+            
+            if (!isDetail) renderDashboard();
+        }
+
+        function processAndRender() {
+            const keys = Object.keys(inspectionData);
+            document.getElementById('totalCount').textContent = `${keys.length} ITEMS`;
+            
+            const grouped = GRADES.reduce((acc, g) => ({...acc, [g]: []}), {});
+            keys.forEach(k => {
+                const item = inspectionData[k];
+                if (grouped[item.grade]) grouped[item.grade].push(k);
+            });
+
+            categoryContainer.innerHTML = '';
+            GRADES.forEach(grade => {
+                const list = grouped[grade];
+                const section = document.createElement('div');
+                section.className = `border-b transition-all ${list.length === 0 ? 'opacity-30' : ''}`;
+                
+                const header = document.createElement('div');
+                header.className = "flex items-center justify-between p-4 cursor-pointer hover:bg-slate-50 sticky top-0 bg-white z-10";
+                header.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-4 h-4 rotate-icon text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7"></path></svg>
+                        <span class="text-sm font-black grade-${grade}">${grade}级</span>
+                        <span class="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full font-mono">${list.length}</span>
+                    </div>
+                `;
+
+                const content = document.createElement('div');
+                content.className = "collapse-content max-h-0 custom-scrollbar";
+                
+                list.forEach(id => {
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "px-10 py-3 text-sm font-mono text-slate-500 border-b border-white/50 cursor-pointer hover:text-blue-600 truncate transition-colors";
+                    itemDiv.textContent = id;
+                    itemDiv.dataset.id = id;
+                    itemDiv.onclick = (e) => {
+                        e.stopPropagation();
+                        document.querySelectorAll('.active-item').forEach(el => el.classList.remove('active-item'));
+                        itemDiv.classList.add('active-item');
+                        showDetail(id);
+                    };
+                    content.appendChild(itemDiv);
+                });
+
+                header.onclick = () => {
+                    const isNowCollapsed = section.classList.toggle('collapsed');
+                    if (isNowCollapsed) {
+                        content.classList.remove('collapse-active');
+                        content.style.maxHeight = '0';
+                    } else {
+                        content.classList.add('collapse-active');
+                    }
+                };
+
+                section.appendChild(header);
+                section.appendChild(content);
+                section.classList.add('collapsed');
+                categoryContainer.appendChild(section);
+            });
+
+            renderDashboard();
+        }
+
+        function getChartConfig(labels, data, colors, isDoughnut = false) {
+            const total = data.reduce((a, b) => a + b, 0);
+            return {
+                type: isDoughnut ? 'doughnut' : 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: colors,
+                        borderWidth: 0,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: { padding: 20 },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true, font: { size: 11, weight: 'bold' } } },
+                        datalabels: {
+                            color: '#fff',
+                            font: { weight: 'bold', size: 11 },
+                            formatter: (value) => {
+                                if (value === 0) return null;
+                                const percentage = ((value / total) * 100).toFixed(1) + '%';
+                                return `${value}\n(${percentage})`;
+                            },
+                            textAlign: 'center',
+                            textShadowColor: 'rgba(0,0,0,0.5)',
+                            textShadowBlur: 4
+                        },
+                        tooltip: {
+                            bodyFont: { size: 12 },
+                            callbacks: {
+                                label: (context) => {
+                                    const val = context.raw;
+                                    const pct = ((val / total) * 100).toFixed(1) + '%';
+                                    return ` ${context.label}: ${val} (${pct})`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: isDoughnut ? '60%' : '0'
+                }
+            };
+        }
+
+        function initCharts(gradeData, typeData) {
+            if (gradeChart) gradeChart.destroy();
+            if (typeChart) typeChart.destroy();
+
+            const ctx1 = document.getElementById('gradePieChart').getContext('2d');
+            gradeChart = new Chart(ctx1, getChartConfig(GRADES, gradeData, GRADE_COLORS, true));
+
+            const ctx2 = document.getElementById('typePieChart').getContext('2d');
+            typeChart = new Chart(ctx2, getChartConfig(TARGET_TYPES, typeData, TYPE_COLORS, false));
+        }
+
+        function renderDashboard() {
+            const keys = Object.keys(inspectionData);
+            if (keys.length === 0) return;
+            document.getElementById('dashboardEmpty').classList.add('hidden');
+
+            let totalPCI = 0, totalArea = 0, totalFindingsCount = 0;
+            const typeCountsMap = TARGET_TYPES.reduce((acc, t) => ({...acc, [t]: 0}), {});
+            const gradeCounts = GRADES.map(g => keys.filter(k => inspectionData[k].grade === g).length);
+            const grouped = GRADES.reduce((acc, g) => ({...acc, [g]: []}), {});
+
+            keys.forEach(k => {
+                const item = inspectionData[k];
+                totalPCI += item.PCI;
+                grouped[item.grade].push({...item, id: k});
+                
+                // 统计该样本的病害总数
+                totalFindingsCount += (item.findings ? item.findings.length : 0);
+
+                item.findings.forEach(f => {
+                    totalArea += (f.area || 0);
+                    if (typeCountsMap.hasOwnProperty(f.type)) {
+                        typeCountsMap[f.type]++;
+                    }
+                });
+            });
+
+            const typeCountsArray = TARGET_TYPES.map(t => typeCountsMap[t]);
+            initCharts(gradeCounts, typeCountsArray);
+
+            const topType = Object.entries(typeCountsMap).sort((a,b) => b[1]-a[1])[0]?.[0] || '无';
+
+            document.getElementById('globalStats').innerHTML = `
+                <div class="bg-white p-5 rounded-2xl border shadow-sm">
+                    <div class="text-xs font-black text-slate-400 uppercase mb-2">样本总量</div>
+                    <div class="text-3xl font-black text-slate-800">${keys.length}</div>
+                </div>
+                <div class="bg-blue-600 p-5 rounded-2xl shadow-lg shadow-blue-200 text-white">
+                    <div class="text-xs font-bold opacity-80 uppercase mb-2">病害总数量</div>
+                    <div class="text-3xl font-black">${totalFindingsCount}</div>
+                </div>
+                <div class="bg-blue-600 p-5 rounded-2xl shadow-lg shadow-blue-200 text-white">
+                    <div class="text-xs font-bold opacity-80 uppercase mb-2">平均 PCI</div>
+                    <div class="text-3xl font-black">${(totalPCI/keys.length).toFixed(1)}</div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border shadow-sm">
+                    <div class="text-xs font-black text-slate-400 uppercase mb-2">高发病害</div>
+                    <div class="text-3xl font-black text-slate-800">${topType}</div>
+                </div>
+                <div class="bg-white p-5 rounded-2xl border shadow-sm">
+                    <div class="text-xs font-black text-slate-400 uppercase mb-2">病害总面积</div>
+                    <div class="text-3xl font-black text-slate-800">${totalArea.toFixed(1)} <span class="text-sm font-normal opacity-40">㎡</span></div>
+                </div>
+            `;
+
+            const gradeDetailCards = document.getElementById('gradeDetailCards');
+            gradeDetailCards.innerHTML = '';
+            GRADES.forEach(g => {
+                const list = grouped[g];
+                if (list.length === 0) return;
+                const avgPCI = list.reduce((acc, c) => acc + c.PCI, 0) / list.length;
+                const typical = list.reduce((p, c) => Math.abs(c.PCI - avgPCI) < Math.abs(p.PCI - avgPCI) ? c : p);
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden flex flex-col group hover:shadow-xl transition-all cursor-pointer";
+                card.innerHTML = `
+                    <div class="h-28 bg-slate-900 relative">
+                        <img src="${imageFiles[typical.id] || ''}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                        <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-white text-xs font-black grade-${g}">${g}级代表</div>
+                    </div>
+                    <div class="p-4 flex-1">
+                        <div class="flex justify-between items-start mb-4">
+                            <div><div class="text-xs font-bold text-slate-400">平均 PCI</div><div class="text-2xl font-black grade-${g}">${avgPCI.toFixed(1)}</div></div>
+                            <div class="text-right"><div class="text-xs font-bold text-slate-400">占比</div><div class="text-sm font-bold text-slate-600">${(list.length/keys.length*100).toFixed(1)}%</div></div>
+                        </div>
+                    </div>
+                `;
+                card.onclick = () => showDetail(typical.id);
+                gradeDetailCards.appendChild(card);
+            });
+        }
+
+        function showDetail(id) {
+            switchView('detail');
+            const data = inspectionData[id];
+            if (!data) return;
+
+            document.getElementById('currentFileName').textContent = id;
+            document.getElementById('statPCI').textContent = data.PCI;
+            document.getElementById('statDR').textContent = data.DR;
+            document.getElementById('statDesc').textContent = data.description;
+            document.getElementById('findingsCount').textContent = `${data.findings.length} 个`;
+            document.getElementById('jsonSnippet').textContent = JSON.stringify(data, null, 2);
+
+            const gradeEl = document.getElementById('currentGrade');
+            gradeEl.textContent = data.grade;
+            gradeEl.className = `px-5 py-1.5 rounded-full text-sm font-black border-2 grade-${data.grade} bg-white`;
+
+            const img = document.getElementById('mainImage');
+            const placeholder = document.getElementById('imgPlaceholder');
+            if (imageFiles[id]) {
+                img.src = imageFiles[id];
+                img.classList.remove('hidden');
+                placeholder.classList.add('hidden');
+            } else {
+                img.classList.add('hidden');
+                placeholder.classList.remove('hidden');
+            }
+
+            const table = document.getElementById('findingsTable');
+            table.innerHTML = '';
+            data.findings.forEach(f => {
+                const tr = document.createElement('tr');
+                
+                // 判断线性长度逻辑：仅横向/纵向裂纹显示 length，其余显示 -
+                const displayLength = (f.type === '横向裂纹' || f.type === '纵向裂纹') ? (f.length || '-') : '-';
+
+                tr.innerHTML = `
+                    <td class="w-1/4 px-6 py-4 font-bold text-slate-700">${f.type}</td>
+                    <td class="w-1/4 px-6 py-4 text-slate-500">${f.severity}</td>
+                    <td class="w-1/4 px-6 py-4 font-mono font-bold text-blue-600">${f.area || '-'}</td>
+                    <td class="w-1/4 px-6 py-4 font-mono font-bold text-slate-400">${displayLength}</td>
+                `;
+                table.appendChild(tr);
+            });
+        }
+
+        function copyJson() {
+            const text = document.getElementById('jsonSnippet').textContent;
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+        }
+    </script>
+</body>
+</html>

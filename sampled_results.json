@@ -1,0 +1,848 @@
+{
+  "ff8080819a51ba2c019b4e41acbe0b5a.jpg": {
+    "description": "路面有麻面病害，无新增病害。",
+    "findings": [
+      {
+        "type": "麻面",
+        "severity": "轻度",
+        "area": 0.4,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.24,
+    "PCI": 91.67,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b9b5dfd1e102e.jpg": {
+    "description": "路面状况良好，含框外新增病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.2,
+        "length": 0.58
+      },
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 0.1,
+        "length": 2.0
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.18,
+    "PCI": 92.6,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4e46282f0ba9.jpg": {
+    "description": "路面有横向裂纹，无其他明显病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.5,
+        "length": 1.4
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.3,
+    "PCI": 90.87,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4e00a72b0a51.jpg": {
+    "description": "路面有修补病害，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 1.1,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.11,
+    "PCI": 93.96,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4fb7a0430fd1.jpg": {
+    "description": "路面状况良好，含框外新增病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.4,
+        "length": 1.16
+      },
+      {
+        "type": "龟裂",
+        "severity": "轻度",
+        "area": 0.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.36,
+    "PCI": 90.15,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b9b65e27f108f.jpg": {
+    "description": "路面有纵向裂纹，无新增病害。",
+    "findings": [
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 0.5,
+        "length": 4.5
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.3,
+    "PCI": 90.87,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4e4183530b55.jpg": {
+    "description": "路面有纵向裂纹，无其他明显病害。",
+    "findings": [
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 0.2,
+        "length": 6.26
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.12,
+    "PCI": 93.74,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4f5a91a00f07.jpg": {
+    "description": "路面有横向裂纹，无新增病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.4,
+        "length": 1.25
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.24,
+    "PCI": 91.67,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4e3cfead0b09.jpg": {
+    "description": "路面有纵向裂纹，无新增病害。",
+    "findings": [
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 0.4,
+        "length": 3.96
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.24,
+    "PCI": 91.67,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019bc452bd801250.jpg": {
+    "description": "路面有修补，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 0.6,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.06,
+    "PCI": 95.29,
+    "grade": "优"
+  },
+  "ff8080819a51ba2c019b4ef7a06c0d78.jpg": {
+    "description": "路面有横向裂纹和积水，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.8,
+        "length": 5.97
+      },
+      {
+        "type": "积水",
+        "severity": "轻度",
+        "area": 1.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 1.38,
+    "PCI": 82.87,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4f005d1e0e21.jpg": {
+    "description": "路面有横向裂纹，无新增病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.71,
+        "length": 0.71
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.43,
+    "PCI": 89.45,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4e3854980ae1.jpg": {
+    "description": "路面有纵向裂缝，无其他明显病害。",
+    "findings": [
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 0.8,
+        "length": 4.8
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.48,
+    "PCI": 88.91,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019bc44e1b1d1208.jpg": {
+    "description": "路面有横向裂纹，无其他明显病害。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.8,
+        "length": 2.2
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.48,
+    "PCI": 88.91,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4f5d31f20f15.jpg": {
+    "description": "路面有纵向裂纹，无其他明显病害。",
+    "findings": [
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 1.6,
+        "length": 4.7
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.96,
+    "PCI": 85.25,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4f025e990e45.jpg": {
+    "description": "路面有修补和横向裂纹，无新增病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 2.1,
+        "length": null
+      },
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.5,
+        "length": 3.0
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.51,
+    "PCI": 88.63,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4dfbb7840a06.jpg": {
+    "description": "路面有条状修补，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 13.1,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 1.31,
+    "PCI": 83.23,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4efe502e0df4.jpg": {
+    "description": "路面有条状修补，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 4.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.42,
+    "PCI": 89.51,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019bc47ec3e813c3.jpg": {
+    "description": "路面有横向裂纹和修补，含框外新增修补。",
+    "findings": [
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.8,
+        "length": 1.54
+      },
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 2.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 0.73,
+    "PCI": 86.82,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019bc485115113e4.jpg": {
+    "description": "路面有条状修补，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 17.6,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 1.76,
+    "PCI": 81.07,
+    "grade": "良"
+  },
+  "ff8080819a51ba2c019b4e0688590abf.jpg": {
+    "description": "路面有条状修补，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 20.8,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 2.08,
+    "PCI": 79.72,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4ee865370d31.jpg": {
+    "description": "路面有麻面病害，无新增病害。",
+    "findings": [
+      {
+        "type": "麻面",
+        "severity": "重度",
+        "area": 3.9,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 3.9,
+    "PCI": 73.72,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4e072d2c0acb.jpg": {
+    "description": "路面有积水病害，无其他明显病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 3.9,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 3.9,
+    "PCI": 73.72,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4e06a0800ac2.jpg": {
+    "description": "路面状况良好，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 3.6,
+        "length": null
+      },
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 0.5,
+        "length": 2.0
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 3.9,
+    "PCI": 73.72,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b9b65a09a108b.jpg": {
+    "description": "路面有修补和积水，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 9.2,
+        "length": null
+      },
+      {
+        "type": "积水",
+        "severity": "轻度",
+        "area": 2.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 2.42,
+    "PCI": 78.41,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b9b5d6084102a.jpg": {
+    "description": "路面有修补和裂缝，含框外新增病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 21.9,
+        "length": null
+      },
+      {
+        "type": "横向裂纹",
+        "severity": "轻度",
+        "area": 1.5,
+        "length": 4.3
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 3.09,
+    "PCI": 76.12,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4e5e96800c27.jpg": {
+    "description": "路面有坑槽积水，无其他明显病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 4.69,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 4.69,
+    "PCI": 71.65,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4e68a5d30c62.jpg": {
+    "description": "路面有修补区域，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 39.0,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 3.9,
+    "PCI": 73.72,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4f6788a30fa8.jpg": {
+    "description": "路面有纵向裂纹和积水，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "纵向裂纹",
+        "severity": "轻度",
+        "area": 1.4,
+        "length": 3.96
+      },
+      {
+        "type": "积水",
+        "severity": "轻度",
+        "area": 2.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 2.34,
+    "PCI": 78.71,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4f610d160f30.jpg": {
+    "description": "路面有坑槽和积水，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 0.3,
+        "length": null
+      },
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 2.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 2.8,
+    "PCI": 77.07,
+    "grade": "中"
+  },
+  "ff8080819a51ba2c019b4e4863b10bbe.jpg": {
+    "description": "路面有麻面病害，无新增病害。",
+    "findings": [
+      {
+        "type": "麻面",
+        "severity": "重度",
+        "area": 5.7,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 5.7,
+    "PCI": 69.27,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4e486abc0bbf.jpg": {
+    "description": "路面有积水和坑槽，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 5.98,
+        "length": null
+      },
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 1.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 7.18,
+    "PCI": 66.21,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4f49061c0e88.jpg": {
+    "description": "路面有积水和坑槽，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 4.9,
+        "length": null
+      },
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 2.0,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 6.9,
+    "PCI": 66.76,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4e4553b30b93.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 10.6,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 10.6,
+    "PCI": 60.32,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4ee0884a0cdf.jpg": {
+    "description": "路面有坑槽积水，无其他明显病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 10.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 10.5,
+    "PCI": 60.48,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4dfcfd1c0a21.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 10.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 10.2,
+    "PCI": 60.95,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4edc29090ca7.jpg": {
+    "description": "路面有积水和坑槽，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 6.2,
+        "length": null
+      },
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 0.1,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 6.3,
+    "PCI": 67.98,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019bc47aa4a51399.jpg": {
+    "description": "路面有条状修补，无新增病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 75.8,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 7.58,
+    "PCI": 65.44,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4f52c8100ec7.jpg": {
+    "description": "路面有积水和坑槽，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 6.17,
+        "length": null
+      },
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 1.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 7.37,
+    "PCI": 65.84,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4f0193dc0e2b.jpg": {
+    "description": "路面有条状修补，无其他明显病害。",
+    "findings": [
+      {
+        "type": "修补",
+        "severity": "一般",
+        "area": 61.6,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 6.16,
+    "PCI": 68.28,
+    "grade": "次"
+  },
+  "ff8080819a51ba2c019b4f553a4d0eee.jpg": {
+    "description": "路面有积水和坑槽，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 10.8,
+        "length": null
+      },
+      {
+        "type": "坑槽",
+        "severity": "重度",
+        "area": 2.0,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 12.8,
+    "PCI": 57.12,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019b4e45c6150ba1.jpg": {
+    "description": "路面有麻面病害，无新增病害。",
+    "findings": [
+      {
+        "type": "麻面",
+        "severity": "重度",
+        "area": 38.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 38.2,
+    "PCI": 32.72,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019bc447505111bd.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 26.2,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 26.2,
+    "PCI": 42.4,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019b4edd62870cb6.jpg": {
+    "description": "路面有积水，包含框外新增病害。",
+    "findings": [
+      {
+        "type": "积水",
+        "severity": "重度",
+        "area": 76.8,
+        "length": null
+      },
+      {
+        "type": "坑槽",
+        "severity": "轻度",
+        "area": 2.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 78.8,
+    "PCI": 9.33,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019bc44425c21189.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 20.5,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 20.5,
+    "PCI": 47.94,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019b4ef6ae3e0d66.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 31.3,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 31.3,
+    "PCI": 38.02,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019bc447f3a611d0.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 40.0,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 40.0,
+    "PCI": 31.43,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019bc4480c3111d3.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 12.3,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 12.3,
+    "PCI": 57.82,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019b4e40931f0b38.jpg": {
+    "description": "路面有麻面病害，无新增病害。",
+    "findings": [
+      {
+        "type": "麻面",
+        "severity": "重度",
+        "area": 21.6,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 21.6,
+    "PCI": 46.8,
+    "grade": "差"
+  },
+  "ff8080819a51ba2c019b4e5dd7670c1d.jpg": {
+    "description": "路面有龟裂病害，无新增病害。",
+    "findings": [
+      {
+        "type": "龟裂",
+        "severity": "重度",
+        "area": 12.1,
+        "length": null
+      }
+    ],
+    "total_area_A": 100,
+    "DR": 12.1,
+    "PCI": 58.1,
+    "grade": "差"
+  }
+}

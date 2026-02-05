@@ -1,0 +1,225 @@
+{
+    "ff8080819a51ba2c019b4dfc1dc00a10.jpg": {
+        "description": "路面整体状况良好，局部有修补痕迹。",
+        "findings": [
+            {
+                "type": "修补",
+                "severity": "一般",
+                "area": 9.0,
+                "length": null,
+                "bbox": [
+                    0.28,
+                    0.65,
+                    0.43,
+                    0.75
+                ],
+                "treatment_suggestion": "评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 0.9,
+        "PCI": 85.64,
+        "grade": "良",
+        "comprehensive_suggestion": "优先处治修补一般（面积9.0m²）：评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+    },
+    "ff8080819a51ba2c019b4e64570f0c4e.jpg": {
+        "description": "路面整体状况良好，存在部分修补区域。",
+        "findings": [
+            {
+                "type": "修补",
+                "severity": "一般",
+                "area": 29.1,
+                "length": null,
+                "bbox": [
+                    0.25,
+                    0.32,
+                    0.48,
+                    0.65
+                ],
+                "treatment_suggestion": "评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 2.91,
+        "PCI": 76.71,
+        "grade": "中",
+        "comprehensive_suggestion": "优先处治修补一般（面积29.1m²）：评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+    },
+    "ff8080819a51ba2c019b4e6b482f0c6c.jpg": {
+        "description": "路面整体状况良好，局部有修补痕迹。",
+        "findings": [
+            {
+                "type": "修补",
+                "severity": "一般",
+                "area": 42.4,
+                "length": null,
+                "bbox": [
+                    0.29,
+                    0.32,
+                    0.45,
+                    0.72
+                ],
+                "treatment_suggestion": "评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 4.24,
+        "PCI": 72.8,
+        "grade": "中",
+        "comprehensive_suggestion": "优先处治修补一般（面积42.4m²）：评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+    },
+    "ff8080819a51ba2c019b4f5b12de0f0a.jpg": {
+        "description": "路面整体状况较好，存在少量病害",
+        "findings": [
+            {
+                "type": "纵向裂纹",
+                "severity": "轻度",
+                "area": 3.2,
+                "length": 9.3,
+                "bbox": [
+                    0.68,
+                    0.65,
+                    0.9,
+                    0.9
+                ],
+                "treatment_suggestion": "开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 1.92,
+        "PCI": 80.37,
+        "grade": "良",
+        "comprehensive_suggestion": "优先处治纵向裂纹轻度（面积3.2m²）：开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+    },
+    "ff8080819a51ba2c019b9b7570d010c5.jpg": {
+        "description": "路面整体状况良好，局部有修补痕迹。",
+        "findings": [
+            {
+                "type": "修补",
+                "severity": "一般",
+                "area": 14.1,
+                "length": null,
+                "bbox": [
+                    0.74,
+                    0.59,
+                    0.97,
+                    0.85
+                ],
+                "treatment_suggestion": "评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 1.41,
+        "PCI": 82.72,
+        "grade": "良",
+        "comprehensive_suggestion": "优先处治修补一般（面积14.1m²）：评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+    },
+    "ff8080819a51ba2c019bc44ab0cf11e7.jpg": {
+        "description": "路面整体状况良好，少量病害存在。",
+        "findings": [
+            {
+                "type": "修补",
+                "severity": "一般",
+                "area": 1.2,
+                "length": null,
+                "bbox": [
+                    0.65,
+                    0.65,
+                    0.75,
+                    0.75
+                ],
+                "treatment_suggestion": "评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+            },
+            {
+                "type": "纵向裂纹",
+                "severity": "轻度",
+                "area": 0.5,
+                "length": 3.0,
+                "bbox": [
+                    0.7,
+                    0.5,
+                    0.72,
+                    0.8
+                ],
+                "treatment_suggestion": "开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 0.42,
+        "PCI": 89.51,
+        "grade": "良",
+        "comprehensive_suggestion": "优先处治纵向裂纹轻度（面积0.5m²）：开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+    },
+    "ff8080819a51ba2c019bc471c8111322.jpg": {
+        "description": "路面整体状况较好，存在一处条状修补",
+        "findings": [
+            {
+                "type": "修补",
+                "severity": "一般",
+                "area": 9.5,
+                "length": null,
+                "bbox": [
+                    0.41,
+                    0.34,
+                    0.48,
+                    0.42
+                ],
+                "treatment_suggestion": "评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 0.95,
+        "PCI": 85.31,
+        "grade": "良",
+        "comprehensive_suggestion": "优先处治修补一般（面积9.5m²）：评估修补质量：若接缝完好则定期观察；若出现新裂缝或沉陷，需铣刨重铺确保与原路面平顺衔接"
+    },
+    "ff8080819a51ba2c019bc47305e9132d.jpg": {
+        "description": "路面整体状况良好，少量轻微病害。",
+        "findings": [
+            {
+                "type": "纵向裂纹",
+                "severity": "轻度",
+                "area": 0.5,
+                "length": 3.5,
+                "bbox": [
+                    0.35,
+                    0.6,
+                    0.36,
+                    0.9
+                ],
+                "treatment_suggestion": "开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+            },
+            {
+                "type": "纵向裂纹",
+                "severity": "轻度",
+                "area": 0.4,
+                "length": 3.0,
+                "bbox": [
+                    0.4,
+                    0.65,
+                    0.41,
+                    0.9
+                ],
+                "treatment_suggestion": "开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+            },
+            {
+                "type": "纵向裂纹",
+                "severity": "轻度",
+                "area": 0.3,
+                "length": 2.5,
+                "bbox": [
+                    0.45,
+                    0.7,
+                    0.46,
+                    0.9
+                ],
+                "treatment_suggestion": "开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+            }
+        ],
+        "total_area_A": 100,
+        "DR": 0.72,
+        "PCI": 86.9,
+        "grade": "良",
+        "comprehensive_suggestion": "优先处治纵向裂纹轻度（面积0.5m²）：开槽灌缝处理：沿裂缝开槽（宽×深=10mm×15mm），清理后灌注聚合物改性沥青密封胶"
+    }
+}
