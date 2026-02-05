@@ -240,8 +240,8 @@ def process_single_image(image_path: str) -> Dict:
 
 def main():
     # 配置路径
-    folders = [r"D:\kp\海康数据\normal_0feac152-f8fd-4c35-9ae1-362cceef16b1_zip"]
-    output_json_path = r"D:\kp\海康数据\mllm_results_new_PCI-5_prom_all.json"
+    folders = [r"D:\kp\海康数据\0feac152-f8fd-4c35-9ae1-362cceef16b1_zip"]
+    output_json_path = r"D:\kp\海康数据\PCI_prompt_all.json"
     results = {}
 
     for folder in folders:
