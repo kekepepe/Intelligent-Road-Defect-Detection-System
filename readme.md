@@ -122,8 +122,8 @@ python PCI_prompt.py
 ├── mllm_results_new.json               # 检测结果（带建议）
 ├── sampled_results.json                # 示例结果
 ├── 图片数据/                            # 测试图像数据(sampled_results)
-├── showpro-4.html                       # 展示界面
-├── showpro-5.html                       # 展示界面（带建议）
+├── showpro-4.html                      # 展示界面
+├── showpro-5.html                      # 展示界面（带建议）
 └── readme.md                           # 项目说明文档
 ```
 
